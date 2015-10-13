@@ -18,10 +18,10 @@ ENV DEBIAN_FRONTEND newt
 RUN mkdir /var/spool/mcrouter
 VOLUME /var/spool/mcrouter
 
-VOLUME /etc/mcrouter.conf
-RUN echo '{"pools":{"A":{"servers":["127.0.0.1:5001"]}}, "route":"PoolRoute|A"}' > /etc/mcrouter.conf
+RUN mkdir /etc/mcrouter
+RUN echo '{"pools":{"A":{"servers":["127.0.0.1:5001"]}}, "route":"PoolRoute|A"}' > /etc/mcrouter/mcrouter.conf
 
 EXPOSE 11211
 
 ENTRYPOINT ["mcrouter"]
-CMD ["--port=11211", "--validate-config=run", "--config-file=/etc/mcrouter.conf"]
+CMD ["--port=11211", "--validate-config=run", "--config-file=/etc/mcrouter/mcrouter.conf"]
