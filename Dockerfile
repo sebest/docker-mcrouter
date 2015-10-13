@@ -19,7 +19,7 @@ RUN mkdir /var/spool/mcrouter
 VOLUME /var/spool/mcrouter
 
 RUN mkdir /etc/mcrouter
-RUN echo '{"pools":{"A":{"servers":["127.0.0.1:5001"]}}, "route":"PoolRoute|A"}' > /etc/mcrouter/mcrouter.conf
+VOLUME /etc/mcrouter
 
 EXPOSE 11211
 
